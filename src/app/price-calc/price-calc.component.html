@@ -1,0 +1,89 @@
+<div class="container" style="margin-top: 20px">
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-8">
+
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center main-header">
+            Price Calculator
+          </h1>
+        </div>
+        <div class="card-body">
+
+          <form class="form-group">
+            <div>
+              <label for="productSelection">Product</label>
+              <select name="productSelection" id="productSelection" class="custom-select" style="display: inline-block" [(ngModel)]="selectedProduct">
+                <option *ngFor="let product of products" [ngValue]="product">{{product.name}}</option>
+              </select>
+            </div>
+            <div style="margin-top: 10px">
+              <label for="units">Units</label>
+              <input name="units" class="form-control" id="units" type="number" min="0" step="1" [(ngModel)]="selectedUnits">
+            </div>
+            <div style="margin-top: 10px">
+              <label for="cartons">Cartons</label>
+              <input name="cartons" class="form-control" id="cartons" type="number" min="0" step="1" [(ngModel)]="selectedCartons">
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px">
+              <button [disabled]="selectedProduct == null" class="btn btn-success" type="button" (click)="calculatePrice()">Calculate</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-2">
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 10px">
+
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <div>
+            Cartons For Optimal Price : {{optimalPrice.cartons}}
+          </div>
+
+          <div>
+            Units For Optimal Price : {{optimalPrice.units}}
+          </div>
+
+          <div>
+            Optimal Price : {{optimalPrice.finalPrice | currency:'':'':'1.2-2'}}
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 10px">
+
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-8">
+      <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px">
+        <button class="btn btn-info" type="button" (click)="showPriceList()">Show Price List</button>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+    </div>
+  </div>
+
+</div>
